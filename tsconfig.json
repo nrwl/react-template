@@ -1,0 +1,37 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/api"
+    },
+    {
+      "path": "./apps/shop-e2e"
+    },
+    {
+      "path": "./apps/shop"
+    },
+    {
+      "path": "./libs/api/products"
+    },
+    {
+      "path": "./libs/shared/models"
+    },
+    {
+      "path": "./libs/shop/data"
+    },
+    {
+      "path": "./libs/shop/feature-product-detail"
+    },
+    {
+      "path": "./libs/shop/feature-products"
+    },
+    {
+      "path": "./libs/shop/shared-ui"
+    },
+    {
+      "path": "./libs/shared/test-utils"
+    }
+  ]
+}

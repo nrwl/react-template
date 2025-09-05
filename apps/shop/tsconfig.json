@@ -1,0 +1,28 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "../../libs/shop/shared-ui"
+    },
+    {
+      "path": "../../libs/shop/feature-products"
+    },
+    {
+      "path": "../../libs/shop/feature-product-detail"
+    },
+    {
+      "path": "../../libs/shop/data"
+    },
+    {
+      "path": "../../libs/shared/models"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "extends": "../../tsconfig.base.json"
+}

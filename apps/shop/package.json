@@ -1,0 +1,23 @@
+{
+  "name": "@org/shop",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "tags": ["scope:shop"],
+    "targets": {
+      "serve": {
+        "dependsOn": ["@org/api:serve"]
+      },
+      "preview": {
+        "dependsOn": ["build", "@org/api:serve"]
+      }
+    }
+  },
+  "devDependencies": {
+    "@org/models": "*",
+    "@org/shop-data": "*",
+    "@org/shop-feature-product-detail": "*",
+    "@org/shop-feature-products": "*",
+    "@org/shop-shared-ui": "*"
+  }
+}

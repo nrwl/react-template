@@ -5,7 +5,7 @@
   "nx": {
     "release": {
       "docker": {
-        "repositoryName": "columferrynx/react-template-api"
+        "repositoryName": "org/react-template-api"
       }
     },
     "targets": {

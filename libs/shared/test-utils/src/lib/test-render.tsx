@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import {render, RenderOptions, RenderResult} from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 interface AllTheProvidersProps {
@@ -13,7 +13,7 @@ function AllTheProviders({ children }: AllTheProvidersProps) {
 export function renderWithRouter(
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) {
+): RenderResult {
   return render(ui, { wrapper: AllTheProviders, ...options });
 }
 

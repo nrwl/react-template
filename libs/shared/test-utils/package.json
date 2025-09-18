@@ -12,6 +12,9 @@
     },
     "./package.json": "./package.json"
   },
+  "devDependencies": {
+    "@org/models": "workspace:*"
+  },
   "nx": {
     "sourceRoot": "libs/shared/test-utils/src",
     "projectType": "library",

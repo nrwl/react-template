@@ -51,8 +51,6 @@ jobs:
         if: ${{ steps.nx-workspace-package-check.outputs.was-changed == 'true' }}
         uses: actions/setup-node@v5
         with:
-          # Use the volta.node property as the source of truth
-          node-version-file: 'package.json'
           cache: 'pnpm'
 
       - name: Run nx migrate if @nx/workspace changed and commit the results
@@ -80,7 +78,6 @@ jobs:
           # Sometimes Nx can require config formatting changes after a migrate command
           # We need to expect lock file changes to be applicable
           pnpm install --ignore-scripts --frozen-lockfile=false
-          pnpm nx format
 
           # migrations.json may or may not exist after running nx migrate
           if [ -f migrations.json ]; then
@@ -89,9 +86,6 @@ jobs:
             # After we have run its migrations, we no longer need the migrations.json file
             rm migrations.json
           fi
-
-          # Ensure all the changed files are formatted appropriately
-          pnpm format
 
           # Commit all the changes to the PR (see note on not being able to use secrets.GITHUB_TOKEN for this)
           git config --global user.email "cferry09@gmail.com"

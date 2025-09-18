@@ -1,4 +1,3 @@
-import { describe, it, expect, beforeEach } from '@jest/globals';
 import { ProductsService } from './products.service';
 // eslint-disable-next-line
 import { ProductFilter } from '@org/models';

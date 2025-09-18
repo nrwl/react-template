@@ -240,7 +240,11 @@ importers:
 
   libs/shared/models: {}
 
-  libs/shared/test-utils: {}
+  libs/shared/test-utils:
+    devDependencies:
+      '@org/models':
+        specifier: workspace:*
+        version: link:../models
 
   libs/shop/data:
     devDependencies:

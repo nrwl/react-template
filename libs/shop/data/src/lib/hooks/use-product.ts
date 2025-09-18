@@ -20,7 +20,7 @@ export function useProduct(id: string | undefined) {
 
       try {
         const response = await fetch(`${API_URL}/products/${id}`);
-        const data: ApiResponse<Product> = await response.json();
+        const data: ApiResponse<Product> = await response.json() as ApiResponse<Product>;
 
         if (!data.success) {
           throw new Error(data.error || 'Failed to load product');

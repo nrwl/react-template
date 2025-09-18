@@ -1,12 +1,12 @@
-# Nx React Template Repository
+# Nx React Repository
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-✨ A template repository showcasing key [Nx](https://nx.dev) features for React monorepos ✨
+✨ A repository showcasing key [Nx](https://nx.dev) features for React monorepos ✨
 
 ## 📦 Project Overview
 
-This template demonstrates a production-ready React monorepo with:
+This repository demonstrates a production-ready React monorepo with:
 
 - **2 Applications**
   - `shop` - React e-commerce application with product listings and detail views
@@ -35,34 +35,34 @@ cd react-template
 npm install
 
 # Serve the React shop application
-nx serve shop
+npx nx serve shop
 
 # Serve the API backend
-nx serve api
+npx nx serve api
 
 # Build all projects
-nx run-many -t build
+npx nx run-many -t build
 
 # Run tests
-nx run-many -t test
+npx nx run-many -t test
 
 # Lint all projects
-nx run-many -t lint
+npx nx run-many -t lint
 
 # Run e2e tests
-nx e2e shop-e2e
+npx nx e2e shop-e2e
 
 # Run tasks in parallel
 
-nx run-many -t lint test build e2e --parallel=3
+npx nx run-many -t lint test build e2e --parallel=3
 
 # Visualize the project graph
-nx graph
+npx nx graph
 ```
 
 ## ⭐ Featured Nx Capabilities
 
-This template showcases several powerful Nx features:
+This repository showcases several powerful Nx features:
 
 ### 1. 🔒 Module Boundaries
 
@@ -78,10 +78,10 @@ Enforces architectural constraints using tags. Each project has specific depende
 **Try it out:**
 ```bash
 # See the current project graph and boundaries
-nx graph
+npx nx graph
 
 # View a specific project's details
-nx show project shop --web
+npx nx show project shop --web
 ```
 
 [Learn more about module boundaries →](https://nx.dev/features/enforce-module-boundaries)
@@ -92,13 +92,13 @@ The API project includes Docker support with automated targets and release manag
 
 ```bash
 # Build Docker image
-nx docker:build api
+npx nx docker:build api
 
 # Run Docker container
-nx docker:run api
+npx nx docker:run api
 
 # Release with automatic Docker image versioning
-nx release
+npx nx release
 ```
 
 **Nx Release for Docker:** The repository is configured to use Nx Release for managing Docker image versioning and publishing. When running `nx release`, Docker images for the API project are automatically versioned and published based on the release configuration in `nx.json`. This integrates seamlessly with semantic versioning and changelog generation.
@@ -111,10 +111,10 @@ End-to-end testing with Playwright is pre-configured:
 
 ```bash
 # Run e2e tests
-nx e2e shop-e2e
+npx nx e2e shop-e2e
 
 # Run e2e tests in CI mode
-nx e2e-ci shop-e2e
+npx nx e2e-ci shop-e2e
 ```
 
 [Learn more about E2E testing →](https://nx.dev/technologies/test-tools/playwright/introduction#e2e-testing)
@@ -125,10 +125,10 @@ Fast unit testing with Vitest for React libraries:
 
 ```bash
 # Test a specific library
-nx test shop-data
+npx nx test shop-data
 
 # Test all projects
-nx run-many -t test
+npx nx run-many -t test
 ```
 
 [Learn more about Vite testing →](https://nx.dev/recipes/vite)
@@ -189,29 +189,29 @@ This repository uses tags to enforce module boundaries:
 
 ```bash
 # Project exploration
-nx graph                                    # Interactive dependency graph
-nx list                                     # List installed plugins
-nx show project shop --web                 # View project details
+npx nx graph                                    # Interactive dependency graph
+npx nx list                                     # List installed plugins
+npx nx show project shop --web                 # View project details
 
 # Development
-nx serve shop                              # Serve React app
-nx serve api                               # Serve backend API
-nx build shop                              # Build React app
-nx test shop-data                          # Test a specific library
-nx lint shop-feature-products              # Lint a specific library
+npx nx serve shop                              # Serve React app
+npx nx serve api                               # Serve backend API
+npx nx build shop                              # Build React app
+npx nx test shop-data                          # Test a specific library
+npx nx lint shop-feature-products              # Lint a specific library
 
 # Running multiple tasks
-nx run-many -t build                       # Build all projects
-nx run-many -t test --parallel=3          # Test in parallel
-nx run-many -t lint test build            # Run multiple targets
+npx nx run-many -t build                       # Build all projects
+npx nx run-many -t test --parallel=3          # Test in parallel
+npx nx run-many -t lint test build            # Run multiple targets
 
 # Affected commands (great for CI)
-nx affected -t build                       # Build only affected projects
-nx affected -t test                        # Test only affected projects
+npx nx affected -t build                       # Build only affected projects
+npx nx affected -t test                        # Test only affected projects
 
 # Docker operations
-nx docker:build api                        # Build Docker image
-nx docker:run api                          # Run Docker container
+npx nx docker:build api                        # Build Docker image
+npx nx docker:run api                          # Run Docker container
 ```
 
 ## 🎯 Adding New Features
@@ -237,6 +237,28 @@ npx nx g @nx/node:lib my-api-lib
 ```
 
 You can use `npx nx list` to see all available plugins and `npx nx list <plugin-name>` to see all generators for a specific plugin.
+
+## Nx Cloud
+
+
+Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+
+- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+
+### Set up CI (non-Github Actions CI)
+
+**Note:** This is only required if your CI provider is not GitHub Actions.
+
+Use the following command to configure a CI workflow for your workspace:
+
+```sh
+npx nx g ci-workflow
+```
+
+[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
 ## Install Nx Console
 

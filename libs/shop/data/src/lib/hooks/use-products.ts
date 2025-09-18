@@ -34,7 +34,7 @@ export function useProducts(
         }
 
         const response = await fetch(`${API_URL}/products?${params}`);
-        const data: ApiResponse<PaginatedResponse<Product>> = await response.json();
+        const data: ApiResponse<PaginatedResponse<Product>> = await response.json() as ApiResponse<PaginatedResponse<Product>>;
 
         if (!data.success) {
           throw new Error(data.error || 'Failed to load products');
@@ -79,7 +79,7 @@ export function useCategories() {
 
       try {
         const response = await fetch(`${API_URL}/products/categories`);
-        const data: ApiResponse<string[]> = await response.json();
+        const data: ApiResponse<string[]> = await response.json() as ApiResponse<string[]>;
 
         if (!data.success) {
           throw new Error(data.error || 'Failed to load categories');

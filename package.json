@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
+  "packageManager": "pnpm@10.11.1",
   "dependencies": {
     "express": "^4.21.2",
     "react": "19.0.0",

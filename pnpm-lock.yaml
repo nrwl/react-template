@@ -198,16 +198,15 @@ importers:
 
   apps/api:
     dependencies:
-      express:
-        specifier: ^4.21.2
-        version: 4.21.2
-    devDependencies:
       '@org/api-products':
         specifier: workspace:*
         version: link:../../libs/api/products
       '@org/models':
         specifier: workspace:*
         version: link:../../libs/shared/models
+      express:
+        specifier: ^4.21.2
+        version: 4.21.2
 
   apps/shop:
     devDependencies:

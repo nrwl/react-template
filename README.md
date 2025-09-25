@@ -9,10 +9,12 @@
 This repository demonstrates a production-ready React monorepo with:
 
 - **2 Applications**
+
   - `shop` - React e-commerce application with product listings and detail views
   - `api` - Backend API with Docker support serving product data
 
 - **7 Libraries**
+
   - `@org/shop-feature-products` - Product listing feature (React)
   - `@org/shop-feature-product-detail` - Product detail feature (React)
   - `@org/shop-data` - Data access layer for shop features
@@ -76,6 +78,7 @@ Enforces architectural constraints using tags. Each project has specific depende
 - `type:ui` - UI component libraries
 
 **Try it out:**
+
 ```bash
 # See the current project graph and boundaries
 npx nx graph
@@ -143,6 +146,7 @@ npx nx fix-ci
 ```
 
 This feature helps maintain a healthy CI pipeline by automatically detecting and suggesting solutions for:
+
 - Missing dependencies
 - Incorrect task configurations
 - Cache invalidation issues
@@ -177,13 +181,13 @@ This feature helps maintain a healthy CI pipeline by automatically detecting and
 
 This repository uses tags to enforce module boundaries:
 
-| Project | Tags | Can Import From |
-|---------|------|----------------|
-| `shop` | `scope:shop` | `scope:shop`, `scope:shared` |
-| `api` | `scope:api` | `scope:api`, `scope:shared` |
+| Project                 | Tags                         | Can Import From              |
+| ----------------------- | ---------------------------- | ---------------------------- |
+| `shop`                  | `scope:shop`                 | `scope:shop`, `scope:shared` |
+| `api`                   | `scope:api`                  | `scope:api`, `scope:shared`  |
 | `shop-feature-products` | `scope:shop`, `type:feature` | `scope:shop`, `scope:shared` |
-| `shop-data` | `scope:shop`, `type:data` | `scope:shared` |
-| `models` | `scope:shared`, `type:data` | Nothing (base library) |
+| `shop-data`             | `scope:shop`, `type:data`    | `scope:shared`               |
+| `models`                | `scope:shared`, `type:data`  | Nothing (base library)       |
 
 ## 📚 Useful Commands
 
@@ -217,21 +221,25 @@ npx nx docker:run api                          # Run Docker container
 ## 🎯 Adding New Features
 
 ### Generate a new React application:
+
 ```bash
 npx nx g @nx/react:app my-app
 ```
 
 ### Generate a new React library:
+
 ```bash
 npx nx g @nx/react:lib my-lib
 ```
 
 ### Generate a new React component:
+
 ```bash
 npx nx g @nx/react:component my-component --project=my-lib
 ```
 
 ### Generate a new API library:
+
 ```bash
 npx nx g @nx/node:lib my-api-lib
 ```
@@ -240,25 +248,12 @@ You can use `npx nx list` to see all available plugins and `npx nx list <plugin-
 
 ## Nx Cloud
 
-
 Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
 
 - [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 - [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Set up CI (non-Github Actions CI)
-
-**Note:** This is only required if your CI provider is not GitHub Actions.
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
 ## Install Nx Console
 
@@ -280,6 +275,7 @@ Nx Console is an editor extension that enriches your developer experience. It le
 ## 💬 Community
 
 Join the Nx community:
+
 - [Discord](https://go.nx.dev/community)
 - [X (Twitter)](https://twitter.com/nxdevtools)
 - [LinkedIn](https://www.linkedin.com/company/nrwl)

@@ -31,15 +31,15 @@ This repository demonstrates a production-ready React monorepo with:
 ```bash
 # Clone the repository
 git clone <your-fork-url>
-cd react-template
+cd <your-repository-name>
 
 # Install dependencies
-npm install
+pnpm install
 
-# Serve the React shop application
+# Serve the React shop application (this will simultaneously serve the API backend)
 npx nx serve shop
 
-# Serve the API backend
+# ...or you can serve the API separately
 npx nx serve api
 
 # Build all projects

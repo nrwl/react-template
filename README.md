@@ -34,7 +34,7 @@ git clone <your-fork-url>
 cd <your-repository-name>
 
 # Install dependencies
-npx install
+npm install
 
 # Serve the React shop application (this will simultaneously serve the API backend)
 npx nx serve shop

@@ -65,6 +65,48 @@ npx nx run-many -t lint test build e2e --parallel=3
 npx nx graph
 ```
 
+## 🧪 Running Tests
+
+Unit tests run with [Vitest](https://vitest.dev) and end-to-end tests run with [Playwright](https://playwright.dev). All tests run through Nx, so results are cached — re-running tests for unchanged projects restores them from cache.
+
+### Unit Tests
+
+```bash
+# Run all unit tests
+npx nx run-many -t test
+
+# Run tests for a single project
+npx nx run @org/shop-data:test
+
+# Run a single test file (arguments after -- are passed to Vitest)
+npx nx run @org/shop-data:test -- use-products.spec.ts
+
+# Watch mode (re-runs tests on file changes)
+npx nx run @org/shop-data:test -- --watch
+
+# Run only tests affected by your changes
+npx nx affected -t test
+```
+
+### E2E Tests
+
+```bash
+# Run Playwright tests (automatically starts the shop preview server on port 4200)
+npx nx run @org/shop-e2e:e2e
+
+# Run a single spec file
+npx nx run @org/shop-e2e:e2e -- src/product-detail.spec.ts
+
+# Run e2e tests in CI mode (splits specs into separate cacheable tasks)
+npx nx run @org/shop-e2e:e2e-ci
+```
+
+Playwright needs its browsers installed once before the first run:
+
+```bash
+npx playwright install
+```
+
 ## ⭐ Featured Nx Capabilities
 
 This repository showcases several powerful Nx features:
@@ -225,6 +267,65 @@ npx nx g @nx/node:lib my-api-lib
 ```
 
 You can use `npx nx list` to see all available plugins and `npx nx list <plugin-name>` to see all generators for a specific plugin.
+
+## 🛠️ Troubleshooting
+
+### `Could not find Nx modules` or `nx: command not found`
+
+Dependencies are not installed (or the install is incomplete). Reinstall from the workspace root:
+
+```bash
+npm install
+```
+
+### Stale or corrupted `node_modules`
+
+If installs or tasks fail in strange ways after switching branches or updating dependencies, remove `node_modules` and reinstall:
+
+```bash
+rm -rf node_modules
+npm install
+```
+
+### Stale task results or cache issues
+
+Nx caches task results. If a task returns outdated output or the Nx daemon misbehaves, clear the cache and reset the daemon:
+
+```bash
+npx nx reset
+```
+
+Vite keeps its own cache under `node_modules/.vite`. If dev server or Vitest behavior looks stale after the reset, clear it too:
+
+```bash
+rm -rf node_modules/.vite
+```
+
+### Port 4200 already in use
+
+The `shop` dev server and the preview server used by the e2e tests both run on port 4200. If a previous server is still running, stop it:
+
+```bash
+lsof -ti:4200 | xargs kill
+```
+
+Note: the Playwright config reuses an existing server on port 4200 (`reuseExistingServer: true`), so a leftover server can make e2e tests run against stale code — kill it and re-run.
+
+### Port 3333 already in use
+
+The `api` server defaults to port 3333. Either stop the conflicting process (`lsof -ti:3333 | xargs kill`) or serve the API on a different port:
+
+```bash
+PORT=3334 npx nx run @org/api:serve
+```
+
+### Playwright: `Executable doesn't exist` / browser not found
+
+The Playwright browsers are not installed. Install them once:
+
+```bash
+npx playwright install
+```
 
 ## Nx Cloud
 

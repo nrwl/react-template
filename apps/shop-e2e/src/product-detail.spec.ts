@@ -97,7 +97,11 @@ test.describe('Product Detail Page', () => {
     await outOfStockCards.first().click();
     await page.waitForURL('**/products/*');
 
-    const outOfStockOverlay = page.locator('[class*="out-of-stock-overlay"]');
+    // Scoped to the detail view: product cards use the same CSS module class
+    // name, so an unscoped match also resolves to the cards on this page.
+    const outOfStockOverlay = page.locator(
+      '[class*="product-detail"] [class*="out-of-stock-overlay"]',
+    );
     await expect(outOfStockOverlay).toBeVisible();
 
     const addToCartButton = page.locator('[class*="add-to-cart-btn"]');

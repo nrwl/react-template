@@ -2,16 +2,16 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => ({
-  root: __dirname,
-  cacheDir: '../../../node_modules/.vite/packages/shop/feature-products',
+  root: import.meta.dirname,
+  cacheDir: '../../../node_modules/.vite/packages/shop/shared-ui',
   plugins: [react()],
   test: {
-    name: '@org/feature-products',
+    name: '@org/shared-ui',
     watch: false,
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/test-setup.ts'],
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    setupFiles: ['./src/test-setup.ts'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: './test-output/vitest/coverage',

@@ -37,8 +37,7 @@
         "devTargetName": "dev",
         "startTargetName": "start",
         "watchDepsTargetName": "watch-deps",
-        "buildDepsTargetName": "build-deps",
-        "typecheckTargetName": "typecheck"
+        "buildDepsTargetName": "build-deps"
       }
     },
     {
@@ -81,16 +80,26 @@
       "options": {
         "testTargetName": "test"
       }
+    },
+    "@nx/js/node",
+    {
+      "plugin": "@nx/js/typescript",
+      "include": ["apps/api/*"],
+      "options": {
+        "typecheck": false,
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.app.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps",
+          "skipBuildCheck": true
+        }
+      }
     }
   ],
   "targetDefaults": {
     "test": {
       "dependsOn": ["^build"]
-    },
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
     },
     "@nx/js:tsc": {
       "cache": true,

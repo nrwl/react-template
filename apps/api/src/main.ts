@@ -1,6 +1,8 @@
+#!/usr/bin/env node
+// @nx-target-name: serve
 import express from 'express';
 import { ProductsService } from '@org/api-products';
-import {
+import type {
   ApiResponse,
   Product,
   ProductFilter,
